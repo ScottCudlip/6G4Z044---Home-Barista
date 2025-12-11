@@ -1,6 +1,29 @@
+# CUSTOMISE / EXTRAS MENU #
+
+# Add Extras #
 Extra Coffee Shot
-Soy Milk
-Oat Milk
+Marshmallow(s)
+Chocolate on the side
+Add chocolate dusting
+
+# Milks #
+Skimmed Milk
+Semi-Skimmed Milk
+Whole Milk
+
+# Dairy Alternatives #
 Coconut Milk
-Vanilla Syrup
+Soya Milk
+Oat Milk
+
+# Syrups #
 Caramel Syrup
+Vanilla Syrup
+Hazelnut Syrup
+Orange Syrup
+Pumpkin Spice Syrup
+
+SF Cararmel Syrup
+SF Vanilla Syrup
+SF Hazelnut Syrup
+SF Gingerbread Syrup

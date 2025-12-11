@@ -13,7 +13,7 @@ Home Barista is an at-home drink ordering app, similar to how you can order drin
 3. This is submitted with flushed out menu files in the .zip, but you can delete these .txt files and the programme will make new ones with default options in them.
 
 ========== ================ ==========
-Created in Visual Studio Code. v1.106.3 and Java v25.0.0
+Developed in Visual Studio Code. v1.106.3 and Java v25.0.0
 
 ========== ================ ==========
 File last updated 10/12/2025

@@ -1,4 +1,4 @@
-//child of Users class
+//child of User class
 
 class Customer extends User
 {

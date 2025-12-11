@@ -1,17 +1,18 @@
-===== TASKS =====
+===== TASK PLANNER =====
 
-[X] readme file, include IDE used.
+[ ] ReadMe file, include IDE used.
 
 Features to add...
-[ ] Use random number function
+[ ] Use random number function for different goodbye message per session
 
 Additional features...
 [ ] Date formatting & calculations
 [ ] colours
+[ ] Research how to make usernames and passwords encrypted/secure. Only if time to implement the feature.
 [X] Saving data between sessions - reading files
 [ ] Code to clear screen between inputs/menus
 [ ] Sign out option to allow signing in without restarting programme
-[ ] GitHub
+[X] GitHub version controls & repositories
 [X] Abstract classes
 [ ] Interfaces
 [ ] Scanner errors: Open scanner in main, pass through to methods and close end of main, or run scanners separately in each method.
@@ -24,8 +25,13 @@ Additional features...
 [ ] Make sure all read/write files are relative and don't have defined paths that will break on different devices
 [ ] Makre sure I have Arrays AND ArrayLists
 [ ] Customer - view orders screen, similar to admin without the admin control features. Could use Inheritance
-
+[ ] Method to make a title/header for different views, that's always the same character length by triming the filler space in the middle.
 
 ===== 1CW50 - REPORT =====
 
 - If submitted as a document, it NEEDS to look like a webpage.
+
+===== SELF-ASSESSMENT =====
+
+[ ] Marking criteria
+

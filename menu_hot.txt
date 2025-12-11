@@ -1,3 +1,15 @@
 Espresso
+Americano Black
+Americano w/ Milk
+
+Cortado
+Flat White
 Cappuccino
 Latte
+Mocha
+
+Hot Milk
+Hot Chocolate
+Chai Latte
+
+Matcha Latte
