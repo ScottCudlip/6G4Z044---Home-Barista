@@ -173,42 +173,39 @@ public class Main
         int typeChoice = input.readInt("Choose Type", 1, 2);
         String menuType = (typeChoice == 1) ? "hot" : "cold";
 
-        //Drink selection
-        ArrayList<String> drinkMenu = fileHandler.loadMenu(menuType);
-        System.out.println("\n=== " + menuType.toUpperCase() + " MENU ===");
-        for (int i = 0; i < drinkMenu.size(); i++)
-        {
-            System.out.println((i + 1) + ". " + drinkMenu.get(i));
-        }
+        //drink selection within the menu
+        ArrayList<String> validDrinks = displayMenuFormatted(menuType);
 
-        int drinkIndex = input.readInt("Select Drink", 1, drinkMenu.size());
-        String selectedDrinkName = drinkMenu.get(drinkIndex - 1);
+        int drinkIndex = input.readInt("Select a drink", 1, validDrinks.size());
+        String selectedDrinkName = validDrinks.get(drinkIndex - 1);
 
         Drinks myDrink;
         if (typeChoice == 1) myDrink = new HotDrink(selectedDrinkName);
         else myDrink = new ColdDrink(selectedDrinkName);
 
-        //Extras selection
         boolean addingExtras = true;
         while (addingExtras)
         {
-            String choice = input.readString("Add extras? (y/n)");
-            if (choice.equalsIgnoreCase("y"))
+            String extrasChoice = input.readString("Would you like to modify your drink or add some extras? (y/n)");
+            if (extrasChoice.equalsIgnoreCase("y"))
             {
-                ArrayList<String> extrasMenu = fileHandler.loadMenu("extras");
-                for (int i = 0; i < extrasMenu.size(); i++)
-                {
-                    System.out.println((i + 1) + ". " + extrasMenu.get(i));
-                }
-                int extrasIndex = input.readInt("Seclect extra", 1, extrasMenu.size());
-                String quantity = input.readString("Quantity / instructions for extra");
+                ArrayList<String> validExtras = displayMenuFormatted("extras");
 
-                myDrink.addExtras(extrasMenu.get(extrasIndex - 1) + " (" + quantity + ")");
-            } else
+                int extrasIndex = input.readInt("Select one modification/extra for your drink order", 1, validExtras.size());
+                String selectedExtra = validExtras.get(extrasIndex - 1);
+
+                if (isCounted(selectedExtra))
+                {
+                    int extraQuantity = input.readInt("How many " + selectedExtra + "s would you like?", 1, 20);
+                    myDrink.addExtras(extraQuantity + "x " + selectedExtra);
+                }
+                System.out.println("Added " + selectedExtra + " to your order.");
+            }
+            else
             {
                 addingExtras = false;
             }
-        }//while loop
+        }
         
         //add notes to a drink order
         String orderNote = input.readString("Add a note (or press enter to skip)");
@@ -216,8 +213,8 @@ public class Main
         String orderString = orderId + ", waiting," + currentUser.getFullName() + "," + myDrink.toString() + "," + orderNote;
         
         fileHandler.saveOrder(orderString);
-        System.out.println("Order placed successfully! Your order ID is: " + orderId);
-    }//customerCreateOrder
+        System.out.println("Order placed successfully! Your order number: " + orderId);
+    }//end of customerCreateOrder
 
     private static void customerViewMenu()
     {
@@ -233,5 +230,54 @@ public class Main
         ArrayList<String> menu = fileHandler.loadMenu(type);
         for(String m : menu) System.out.println("- " + m);
     }
+
+    private static ArrayList<String> displayMenuFormatted(String menuType)
+    {
+        ArrayList<String> menuFileLines = fileHandler.loadMenu(menuType);
+        ArrayList<String> menuItems = new ArrayList<>();
+
+        int counter = 1;
+
+        System.out.println("\n=== " + menuType.toUpperCase() + " MENU ===");
+
+        for (String menuLine : menuFileLines)
+        {
+            String menuLineTrimmed = menuLine.trim();
+
+            if (menuLineTrimmed.isEmpty())
+            {
+                //reading empty lines in menu files and displaying them in the terminal correctly without being numbered as items.
+                System.out.println("");
+            }
+            else if (menuLineTrimmed.startsWith("#"))
+            {
+                //identifying menu subtitles and formatting them.
+                String menuSubtitle = menuLineTrimmed.replace("#", "").trim();
+                System.out.println(Format.BG_WHITE + Format.TXT_WHITE + "=== " + menuSubtitle.toUpperCase() + " ===" + Format.ANSI_RESET);
+            }
+            else
+            {
+                //finally, displaying the actual menu items and numbering them correctly.
+                System.out.println(counter + ". " + menuLineTrimmed);
+                menuItems.add(menuLineTrimmed);
+                counter++;
+            }
+        }
+        //indexes the actual menu items correctly in the array after removing the subtitles and empty lines.
+        return menuItems;
+    }//end of displayMenuFormatted
+
+    //method decides is a number is needed after selecting specific extras
+    private static boolean isCounted(String itemName)
+    {
+        String lower = itemName.toLowerCase();
+        return //couldn't make work on a single line in brackets
+            lower.contains("syrup") || 
+            lower.contains("shot") || 
+            lower.contains("sugar") ||
+            lower.contains("sweetener") ||
+            lower.contains("marshmallow");
+    }//isCounted
+
 }//Main class
 

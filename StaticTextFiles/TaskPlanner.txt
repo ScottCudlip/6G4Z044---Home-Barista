@@ -31,7 +31,7 @@ Additional features...
 
 - If submitted as a document, it NEEDS to look like a webpage.
 
-===== SELF-ASSESSMENT =====
+===== DOCUMENTS =====
 
-[ ] Marking criteria
-
+[ ] Marking criteria.
+[ ] Lookup readme examples to structure my readme file.

@@ -13,15 +13,12 @@
 |   MARK BAND   |           CODE FEATURES           |               CODE STYLE              |
 |===============|===================================|=======================================|
 |               |                                   |                                       |
-|   0-19        |   [X] Basic user input            |   [ ] Little or no code submitted     |
-|   20-39       |   [X] Selection                   |   [ ] Partial code submitted          |
-|   40-49       |   [X] Loops, Methods              |   [X] Variables named appropriately   |
-|   50-59       |   [ ] Arrays, Testing             |   [X] Consistent indentation          |
-|   60-74       |   [ ] Object-orientation          |   [ ] Extensive comments              |
-|   75-85       |   [X] Inheritance + Advanced OO   |   [X] Appropriate package structure   |
-|   86-100      |   [ ] 1-3 Additional features     |   [ ] Self-directed code management   |
+|      0-19     |   [X] Basic user input            |   [ ] Little or no code submitted     |
+|     20-39     |   [X] Selection                   |   [ ] Partial code submitted          |
+|     40-49     |   [X] Loops, Methods              |   [X] Variables named appropriately   |
+|     50-59     |   [ ] Arrays, Testing             |   [X] Consistent indentation          |
+|     60-74     |   [ ] Object-orientation          |   [ ] Extensive comments              |
+|     75-85     |   [X] Inheritance + Advanced OO   |   [X] Appropriate package structure   |
+|    86-100     |   [ ] 1-3 Additional features     |   [ ] Self-directed code management   |
 |               |                                   |                                       |
 |===============|===================================|=======================================|
-
-
-
