@@ -12,6 +12,12 @@ Home Barista is an at-home drink ordering app, similar to how you can order drin
 
 3. This is submitted with flushed out menu files in the .zip, but you can delete these .txt files and the programme will make new ones with default options in them.
 
+4. If you'd like to delete the orders.txt file and start fresh, please delete the id_counter.txt as well, this will start the order number ID's from 1 again.
+
+5. Apologies for the mess of comments, In the beginning I liked them on their own lines before lines of code but as the programme grew I realised it was a lot easy to read with the comments in-line at the end so they are varied.
+
+
+
 ========== ================ ==========
 Developed in Visual Studio Code. v1.106.3 and Java v25.0.0
 

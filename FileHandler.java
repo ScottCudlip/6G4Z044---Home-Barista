@@ -102,7 +102,7 @@ public class FileHandler
             case FILE_MENU_COLD -> {               
                 out.println("Iced Americano");
                 out.println("Iced Latte");
-                out.println("Cold Chocolate");
+                out.println("Iced Chocolate");
                 }
             case FILE_MENU_EXTRAS -> {
                 out.println("Extra Coffee Shot");

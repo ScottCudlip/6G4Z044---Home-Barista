@@ -1,0 +1,19 @@
+============ BUG TRACKER ============
+
+BUGS...
+[ ] ALL         -   Extras displaying on one line is difficult to read if there are a lot of them
+[X] ALL         -   Saving menu items to files as number selections can't work if menus are edited after saving, they'll be read wrong.
+
+[ ] CUSTOMER    -  Can't go back a menu once selected hot/cold or extras
+[X] CUSTOMER    -  If multiple extras are on an orderm the array is read wrong when displaying those in the order history screen
+                    //FIXED: changed "," to "|" in orders.txt
+[X] CUSTOMER    -  My order history screen has formatting issues
+[ ] CUSTOMER    -  When adding extras, the screen should clear after confirmation message, otherwise likely to get another number input instead of y/n confirmation
+[ ] CUSTOMER    -  Screen should clear again before asking if they want to add a note to the order.
+[ ] CUSTOMER    -  Order history screen doesn't need to have user's name displayed each time. Inheritance needs changed so this doesn't affect admin view
+
+
+[X] ADMIN       -   Can't see the menus once selected one to edit.
+                    //FIXED: Screen was being cleared after the menu was printed to terminal
+[X] ADMIN       -   View orders screen not displaying anything since implementation of custom order history screen. linked to name of order creater
+                    //FIXED: Capital W on waiting was not being found.

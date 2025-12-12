@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main 
 {
-    private static final  InputHelper input = new InputHelper();
+    private static final InputHelper input = new InputHelper();
     private static final FileHandler fileHandler = new FileHandler();
 
     //stores who is currently logged into the app
@@ -12,12 +12,18 @@ public class Main
 
     public static void main(String[] args) 
     {
-        System.out.println("=== WELCOME TO HOME BARISTA ===");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println("""
+                ================================================
+                ========        HOME BARISTA APP        ========
+                ================================================
+                """);
 
         while (currentUser == null)
         {
-            String username = input.readString("username");
-            String password = input.readString("password");
+            System.out.println(Format.TXT_YELLOW + "\nWelcome!" + Format.ANSI_RESET + " Please login...");
+            String username = input.readString("\nusername");
+            String password = input.readString("\npassword");
 
             if (username.equals("admin") && password.equals("admin123"))
             {
@@ -29,26 +35,33 @@ public class Main
             }//else if
             else
             {
-                System.out.println("Invalid credentials. Please try again.");
-                System.out.println("for testing 'admin'    : admin/admin123");
-                System.out.println("for testing 'customer' : customer/cust123");
+                //displays error message if logins are wrong.
+                //CHANGE
+                //added tips for testing user profiles
+                System.out.print(Format.SCREEN_RESET);
+                System.out.println(Format.TXT_RED + "Invalid credentials. Please try again." + Format.ANSI_RESET);
+                System.out.println("for testing 'admin' account     :use:    admin/admin123");
+                System.out.println("for testing 'customer' account  :use:    customer/cust123");
             }//else
         }//while loop
 
-        System.out.println("Welcome, " + currentUser.getFullName() + "!");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println("Welcome, " + Format.TXT_BLUE + currentUser.getFullName() + Format.ANSI_RESET + "!");
 
         //main app loop structure
         boolean running = true;
         while (running)
         {
-            System.out.println("\n=== MAIN MENU ===");
+            System.out.print(Format.SCREEN_RESET);
+            System.out.println("=====   MAIN MENU   =====");
             
             if (currentUser.isAdmin())
             {
-                //admin menu
-                System.out.println("1. View active orders");
-                System.out.println("2. Edit menus");
-                System.out.println("3. Exit");
+                //admin's main menu
+                System.out.println("""
+                        1. View active orders
+                        2. Edit menus""");
+                System.out.println(Format.TXT_YELLOW + "3. Exit" + Format.ANSI_RESET);
 
                 int choice = input.readInt("Select", 1, 3);
 
@@ -60,66 +73,63 @@ public class Main
                 }//switch
             } else
             {
-                //customer menu
-                System.out.println("1. Create new order");
-                System.out.println("2. View menu only");
-                System.out.println("3. Exit");
+                //customer's main menu
+                System.out.println("""
+                        1. Create new order
+                        2. See menu (View only)
+                        3. See my orders (Full history)""");
+                System.out.println(Format.TXT_YELLOW + "4. Exit" + Format.ANSI_RESET);
 
-                int choice = input.readInt("Select",1 , 3);
+                int choice = input.readInt("Select",1 , 4);
 
                 switch (choice)
                 {
                     case 1 -> customerCreateOrder();
                     case 2 -> customerViewMenu();
-                    case 3 -> running = false;
+                    case 3 -> customerViewHistory();
+                    case 4 -> running = false;
                 }//switch
             }//else
         }//while loop
-        System.out.println("App terminated. Goodbye!");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println(Format.TXT_BLUE + "App terminated." + Format.ANSI_RESET + " Goodbye!");
         //input.close();
     }//main method
 
     //admin view active orders screen
     private static void adminViewOrders()
     {
-        System.out.println("\n=== ACTIVE ORDERS ===");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println("=====   ACTIVE ORDERS   =====");
+
+        AdminOrderQueue view = new AdminOrderQueue();
+        view.printList(currentUser);
 
         ArrayList<String> orders = fileHandler.readAllOrders();
-
         boolean isWaiting = false;
-        if (orders.isEmpty())
-        {
-            System.out.println("No orders at the moment.");
-        } else
-        {
-            for (String order : orders)
-            {
-                System.out.println(order);
-                if (order.contains("Waiting")) isWaiting = true;
-            }
-        }//else
-
-        //option to complete the next order in the queue
+        for (String o : orders) if(o.contains("Waiting")) isWaiting = true;
+        
         if (isWaiting)
         {
-            System.out.println("\n----------------------------");
-            String ans = input.readString("Mark current order as completed? (y/n)");
-
-            if (ans.equalsIgnoreCase("y"))
+            System.out.println("\n------------------------------");
+            String adminAnswer = input.readString("Mark the current order as completed? (y/n)");
+            if (adminAnswer.equalsIgnoreCase("y"))
             {
                 fileHandler.completeNextOrder();
-                adminViewOrders(); //refresh view
+                adminViewOrders();
             }
-        } else
+        }
+        else
         {
-            input.readString("\nPress enter to go back...");
+            input.readString("\nNo orders right now. Press enter to go back...");
         }
     }//adminViewOrders
 
     //admin edit menus screen
     private static void adminEditMenus()
     {
-        System.out.println("\n=== EDIT MENUS ===");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println("=====   EDIT MENUS   =====");
         System.out.println("1. Edit Hot Drinks");
         System.out.println("2. Edit Cold Drinks");
         System.out.println("3. Edit Extras");
@@ -130,13 +140,15 @@ public class Main
         //load the selected menu
         ArrayList<String> currentMenu = fileHandler.loadMenu(menuType);
 
-        System.out.println("\n=== CURRENT " + menuType.toUpperCase() + " MENU ===");
+        System.out.print(Format.SCREEN_RESET);
+
+        System.out.println("=====   CURRENT " + menuType.toUpperCase() + " MENU   =====");
         for (int i = 0; i < currentMenu.size(); i++)
         {
             System.out.println((i + 1) + ". " + currentMenu.get(i));
         }
 
-        System.out.println("\nOptions:");
+        System.out.println("=====   Options:   =====");
         System.out.println("1. Add new item");
         System.out.println("2. Remove an item");
         System.out.println("3. Cancel");
@@ -146,18 +158,26 @@ public class Main
         if (option == 1)
         {
             //add new item
+            System.out.print(Format.SCREEN_RESET);
             String newItem = input.readString("Enter the name of the new item");
             currentMenu.add(newItem);
             fileHandler.saveMenu(menuType, currentMenu);
-            System.out.println("Item added successfully.");
+            System.out.println(Format.TXT_GREEN + "Item added successfully." + Format.ANSI_RESET);
+
+            //lets the user see the success message from eiditing the menu before leaving the screen
+            input.readString("Press enter to continue...");
         } else if (option == 2)
         {
             {
                 //remove an item
+                System.out.print(Format.SCREEN_RESET);
                 int removeIndex = input.readInt("Enter the item number to remove it", 1, currentMenu.size());
                 String removedItem = currentMenu.get(removeIndex - 1);
+
+                currentMenu.remove(removeIndex - 1);
+
                 fileHandler.saveMenu(menuType, currentMenu);
-                System.out.println("Removed item successfully: " + removedItem);
+                System.out.println(Format.TXT_GREEN + "Removed item successfully: " + Format.ANSI_RESET + removedItem);
             }
         }//else if
     }//adminEditMenus
@@ -165,6 +185,7 @@ public class Main
     //customer create new order screen
     private static void customerCreateOrder()
     {
+        System.out.print(Format.SCREEN_RESET);
         System.out.println("\n=== CREATE NEW ORDER ===");
 
         //Hot/Cold drinks menu selection
@@ -187,6 +208,7 @@ public class Main
         while (addingExtras)
         {
             String extrasChoice = input.readString("Would you like to modify your drink or add some extras? (y/n)");
+            
             if (extrasChoice.equalsIgnoreCase("y"))
             {
                 ArrayList<String> validExtras = displayMenuFormatted("extras");
@@ -196,9 +218,16 @@ public class Main
 
                 if (isCounted(selectedExtra))
                 {
-                    int extraQuantity = input.readInt("How many " + selectedExtra + "s would you like?", 1, 20);
-                    myDrink.addExtras(extraQuantity + "x " + selectedExtra);
+                    String prompt = getQuantityPrompt(selectedExtra);
+                    int extrasQuantity = input.readInt(prompt, 1 ,20);
+
+                    myDrink.addExtras(extrasQuantity + "x " + selectedExtra);
                 }
+                else
+                {
+                    myDrink.addExtras(selectedExtra);
+                }
+
                 System.out.println("Added " + selectedExtra + " to your order.");
             }
             else
@@ -210,14 +239,17 @@ public class Main
         //add notes to a drink order
         String orderNote = input.readString("Add a note (or press enter to skip)");
         String orderId = fileHandler.generateOrderId();
-        String orderString = orderId + ", waiting," + currentUser.getFullName() + "," + myDrink.toString() + "," + orderNote;
+        
+        //
+        String orderString = orderId + "|Waiting|" + currentUser.getFullName() + "|" + myDrink.toString() + "|" + orderNote;
         
         fileHandler.saveOrder(orderString);
-        System.out.println("Order placed successfully! Your order number: " + orderId);
+        System.out.println(Format.TXT_GREEN + "Order placed successfully!" + Format.ANSI_RESET + " Your order number: " + orderId);
     }//end of customerCreateOrder
 
     private static void customerViewMenu()
     {
+        System.out.print(Format.SCREEN_RESET);
         System.out.println("1. View Hot Drinks");
         System.out.println("2. View Cold Drinks");
         int type = input.readInt("Select menu", 1, 2);
@@ -238,7 +270,8 @@ public class Main
 
         int counter = 1;
 
-        System.out.println("\n=== " + menuType.toUpperCase() + " MENU ===");
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println(Format.BG_WHITE + Format.TXT_BLACK + "\n=== " + menuType.toUpperCase() + " MENU ===" + Format.ANSI_RESET);
 
         for (String menuLine : menuFileLines)
         {
@@ -253,7 +286,7 @@ public class Main
             {
                 //identifying menu subtitles and formatting them.
                 String menuSubtitle = menuLineTrimmed.replace("#", "").trim();
-                System.out.println(Format.BG_WHITE + Format.TXT_WHITE + "=== " + menuSubtitle.toUpperCase() + " ===" + Format.ANSI_RESET);
+                System.out.println("=== " + menuSubtitle.toUpperCase() + " ===");
             }
             else
             {
@@ -277,7 +310,43 @@ public class Main
             lower.contains("sugar") ||
             lower.contains("sweetener") ||
             lower.contains("marshmallow");
-    }//isCounted
+    }//end of isCounted
+
+    private static String getQuantityPrompt(String itemName)
+    {
+        String lower = itemName.toLowerCase();
+        String extrasCategory = "default";
+
+        if (lower.contains("syrup")) extrasCategory = "syrup";
+        else if (lower.contains("shot")) extrasCategory = "shot";
+        else if (lower.contains("sugar")) extrasCategory = "sugar";
+        else if (lower.contains("sweetener")) extrasCategory = "sweetener";
+        else if (lower.contains("marshmallow")) extrasCategory = "marshmallow";
+
+        //Categories of items give different prompts for quantity input
+        //used copilot to understand and get the solution to my switch suggesting "convert to switch expression"
+        return switch (extrasCategory)
+        {
+            case "syrup"        -> "How many pumps of " + itemName + " ?";
+            case "shot"         -> "How many extras shots?";
+            case "sugar"        -> "How many teaspoons of sugar?";
+            case "sweetener"    -> "How many sweeteners?";
+            case "marshmallow"  -> "How many marshmallows?";
+            default -> "Quantity of " + itemName + "?";
+        };
+
+    }//end of getQuantityPrompt
+
+    private static void customerViewHistory()
+    {
+        System.out.print(Format.SCREEN_RESET);
+        System.out.println("=====   MY ORDER HISTORY   =====");
+
+        CustomerOrderHistory view = new CustomerOrderHistory();
+        view.printList(currentUser);
+
+        input.readString("\nPress enter to go back...");
+    }
 
 }//Main class
 

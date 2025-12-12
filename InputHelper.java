@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 public class InputHelper
 {
-    private Scanner scanner;
+    //CHANGE
+    //allocated new scanner in memory, fixed the error for now
+    private Scanner scanner = new Scanner(System.in);
+    //not closed anywhere, yet!
 
     public InputHelper()
     {
