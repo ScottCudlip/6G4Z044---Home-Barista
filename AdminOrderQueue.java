@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 
+//AdminOrderQueue inherits from OrderViewer parent, then displays the the orders oldest first
 public class AdminOrderQueue extends OrderViewer
 {
     public AdminOrderQueue()
@@ -23,4 +24,4 @@ public class AdminOrderQueue extends OrderViewer
         }
         return waitingOrders;
     }
-}
+}//end of AdminOrderQueue()

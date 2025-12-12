@@ -43,7 +43,8 @@ public class InputHelper
             }
             catch (NumberFormatException e)
             {
-                System.out.println("Error: Please enter a valid number.");
+                System.out.print(Format.SCREEN_RESET);
+                System.out.println(Format.TXT_RED + "Error: Please enter a valid number." + Format.ANSI_RESET);
             }
         }
     }

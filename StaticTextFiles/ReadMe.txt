@@ -9,17 +9,11 @@ Home Barista is an at-home drink ordering app, similar to how you can order drin
     - Password = cust123        |       - Password = admin123
 
 2.  If Home Barista cannot find files needed for it's menus, it will create default menus with a small list of defualt menu items. The "Admin" user can create/remove items from each menu.
-
 3. This is submitted with flushed out menu files in the .zip, but you can delete these .txt files and the programme will make new ones with default options in them.
-
 4. If you'd like to delete the orders.txt file and start fresh, please delete the id_counter.txt as well, this will start the order number ID's from 1 again.
-
 5. Apologies for the mess of comments, In the beginning I liked them on their own lines before lines of code but as the programme grew I realised it was a lot easy to read with the comments in-line at the end so they are varied.
 
-
-
 ========== ================ ==========
-Developed in Visual Studio Code. v1.106.3 and Java v25.0.0
-
+Developed in Visual Studio Code. v1.107.0 using Java v25.0.0
+File last updated 12/12/2025
 ========== ================ ==========
-File last updated 10/12/2025

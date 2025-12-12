@@ -16,10 +16,32 @@
 |      0-19     |   [X] Basic user input            |   [X] Little or no code submitted     |
 |     20-39     |   [X] Selection                   |   [X] Partial code submitted          |
 |     40-49     |   [X] Loops, Methods              |   [X] Variables named appropriately   |
-|     50-59     |   [X] Arrays, [ ] Testing         |   [X] Consistent indentation          |
-|     60-74     |   [X] Object-orientation          |   [ ] Extensive comments              |
+|     50-59     |   [X] Arrays, Testing             |   [X] Consistent indentation          |
+|     60-74     |   [X] Object-orientation          |   [X] Extensive comments              |
 |     75-85     |   [X] Inheritance + Advanced OO   |   [X] Appropriate package structure   |
 |    86-100     |   [X] 1-3 Additional features     |   [X] Self-directed code management   |
 |               |                                   |                                       |
 |===============|===================================|=======================================|
 
+
+
+# BASIC USER INPUT #
+- InputHelper.java is an OO solution to use a scanner without importing it multiple times and writing lines of code to close it every time as I found this difficult in testing with data being held incorrectly and a lot of code needed to fix it, so I researched a one-size-fits-all approach online.
+
+# SELECTION #
+- Multiple uses of if, if-else and switch statements to determine user selection.
+
+# LOOPS, Methods #
+- while loops primarily used: Logging in to the app, app is 'running' condition until changed by 'exit' selection. And whether the user is adding extras to their order until they are finished.
+- Extensive use of methods, these grew in number quickly as I built more features into the programme. Methods I thought should be extracted into separate classes that made sense have been moved from Main.java
+
+# ARRAYS & TESTING #
+- Extensive use of ArrayLists and some Arrays across the entire programme. The basis of the programme is selection of options from menus but these menus can be changed in size.
+- Testing carried out during the developmet of the programme and any bugs found were listed in BugTracker.txt and corrected.
+
+# OBJECT-ORIENTATION #
+- 
+
+# ADDITIONAL FEATURES #
+- Saving data between sessions with read/write files. Some .txt files are formatted for a cleaner layout in terminal, the programme recognises "#" character and black lines and eliminates them from being includes in the ArrayLists. Inspired by YAML files I've worked with in the past.
+- Formating colours for text output in terminal, and clearing the screen for easier UX. Consistent use of colours implemented... green:success messages, yellow:waiting orders, red:errors,
