@@ -32,7 +32,7 @@
 [X] ALL         -   Saving menu items to files as number selections can't work if menus are edited after saving, they'll be read wrong.
 [X] ALL         -   If you press enter when a menu is asking for an option it will correctly give error message, but it clears the screen so you can't see that same menu anymore. Remove screen clear or display the menu again after error message (I'll need to create a way to track what menu I'm currently in to do this option)
 
-[ ] CUSTOMER    -   Can't go back a menu once selected hot/cold or extras
+[ ] CUSTOMER    -   Can't go back a menu once selected hot/cold or extras. Do I want to correct this? It creates guranteed flow of menus
 [X] CUSTOMER    -   If multiple extras are on an orderm the array is read wrong when displaying those in the order history screen. //FIXED: changed "," to "|" in orders.txt
 [X] CUSTOMER    -   My order history screen has formatting issues
 [X] CUSTOMER    -   When adding extras, the screen should clear after confirmation message, otherwise likely to get another number input instead of y/n confirmation
