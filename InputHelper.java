@@ -21,7 +21,7 @@ public class InputHelper
         return scanner.nextLine().trim();
     }
 
-    public int readInt(String prompt, int min, int max)
+    public int readInt(String prompt, int min, int max)     //custom scanner and prompt for menu choice inputs
     {
         int input;
         while (true)
@@ -30,7 +30,7 @@ public class InputHelper
             try
             {
                 String line = scanner.nextLine();
-                input = Integer.parseInt(line.trim());
+                input = Integer.parseInt(line.trim());  //reads the next line and converts to an integer if valid, otherwise it's a string
 
                 if (input >= min && input <= max)
                 {
@@ -43,9 +43,24 @@ public class InputHelper
             }
             catch (NumberFormatException e)
             {
-                System.out.print(Format.SCREEN_RESET);
+                //System.out.print(Format.SCREEN_RESET); //this was causing UX issues if the wrong input was entered it would remove the menu you needed to pick from again
                 System.out.println(Format.TXT_RED + "Error: Please enter a valid number." + Format.ANSI_RESET);
             }
+        }
+    }
+
+    public String readYesNo(String prompt)  //solution to readString allowing y/n prompts to be skipped and orders not created or saved
+    {
+        while (true)
+        {
+            String response = readString(prompt);   //getting input from previous string method
+
+            //fix for y/n questions being skippable with any other input and preventing expected programme behaviour
+            if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("n"))
+            {
+                return response.toLowerCase();
+            }
+            System.out.println(Format.TXT_RED + "Invalid input. " + Format.ANSI_RESET + "Please enter 'y' or 'n'.");
         }
     }
 }

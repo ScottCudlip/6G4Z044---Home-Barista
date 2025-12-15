@@ -2,7 +2,7 @@
 
 [X] Readme file, include IDE used.
 
-[ ] Date formatting & calculations
+[N] Date formatting & calculations, anywhere dates would be useful/SHOULD be used?
 [X] colours
 [ ] Research how to make usernames and passwords encrypted/secure. Only if time to implement the feature.
 [X] Saving data between sessions - reading files
@@ -22,11 +22,11 @@
 [X] Customer - view orders screen, similar to admin without the admin control features. Could use Inheritance
 [ ] Method to make a title/header for different views, that's always the same character length by triming the filler space in the middle.
 [X] Formatting the layout of the menus has broken the edit menus option for admin, need to fix.
-[ ] Hints for editing menus, keywords for extras will ask different questions after selection. And #'s used to create subtitle in menus
+[X] Hints for editing menus, keywords for extras will ask different questions after selection. And #'s used to create subtitle in menus
 
 
 
-============ BUG/BEHAVIOURS ============
+============ BUGS/BEHAVIOURS ===========
 
 [X] ALL         -   Extras displaying on one line is difficult to read if there are a lot of them
 [X] ALL         -   Saving menu items to files as number selections can't work if menus are edited after saving, they'll be read wrong.
@@ -35,9 +35,10 @@
 [ ] CUSTOMER    -   Can't go back a menu once selected hot/cold or extras
 [X] CUSTOMER    -   If multiple extras are on an orderm the array is read wrong when displaying those in the order history screen. //FIXED: changed "," to "|" in orders.txt
 [X] CUSTOMER    -   My order history screen has formatting issues
-[ ] CUSTOMER    -   When adding extras, the screen should clear after confirmation message, otherwise likely to get another number input instead of y/n confirmation
-[ ] CUSTOMER    -   Screen should clear again before asking if they want to add a note to the order.
-[ ] CUSTOMER    -   Order history screen doesn't need to have user's name displayed each time. Inheritance needs changed so this doesn't affect admin view output
+[X] CUSTOMER    -   When adding extras, the screen should clear after confirmation message, otherwise likely to get another number input instead of y/n confirmation
+[X] CUSTOMER    -   Screen should clear again before asking if they want to add a note to the order.
+[X] CUSTOMER    -   Order history screen doesn't need to have user's name displayed each time. Inheritance needs changed so this doesn't affect admin view output
+[X] CUSTOMER    -   If customer changes their profile name their old orders are no longer linked. //FIXED, orders save username too as permanent link, then get full name when displaying orders
 
 [X] ADMIN       -   Diagnostics test for cold drink with multiple extras failing //FIXED
 [X] ADMIN       -   Can't see the menus once selected one to edit. //FIXED: Screen was being cleared after the menu was printed to terminal
@@ -54,7 +55,7 @@
 
 ============= DOCUMENTS =============
 
-[X] Marking criteria - Self-assesment.
+[X] Marking criteria - Self-assessment.
 [X] readme file.
 
 

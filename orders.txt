@@ -1,1 +1,3 @@
-HB-1|Complete|Steve Jobs|Hot Chocolate (Hot) with Coconut Milk, 4x Vanilla Syrup|
+HB-1|Complete|customer|Steve Jobs|Latte (Hot) with Coconut Milk, 4x Vanilla Syrup|Extra hot please
+HB-2|Complete|customer|Steve Jobs|Salted Caramel Frappe (Cold) with 1x Extra Coffee Shot|
+HB-3|Waiting|customer|Steve Jobs|Iced Latte (Cold) with Oat Milk|

@@ -47,9 +47,10 @@ public class Main
                 //added tips for lecturers to test user profiles
                 System.out.print(Format.SCREEN_RESET);
                 System.out.println(Format.TXT_RED + "Invalid credentials. Please try again." + Format.ANSI_RESET);
-                System.out.println("\nfor testing 'admin' account..." + Format.TXT_CYAN + "\t\tadmin / admin123" + Format.ANSI_RESET);
+                System.out.println("------------------------------------------------------------");
+                System.out.println("For testing 'admin' account..." + Format.TXT_CYAN + "\t\tadmin / admin123" + Format.ANSI_RESET);
                 System.out.println("for testing 'customer' account..." + Format.TXT_CYAN + "\tcustomer / cust123" + Format.ANSI_RESET);
-                System.out.println("----------------------------------------");
+                System.out.println("------------------------------------------------------------");
             }
         }//end of login while loop
 
@@ -70,8 +71,7 @@ public class Main
                     1. View active orders
                     2. Edit menus
                     3. Edit profile
-                    4. Run app diagnostics
-                    """);
+                    4. Run app diagnostics""");
                 System.out.println(Format.TXT_RED + "5. Exit" + Format.ANSI_RESET);
 
                 int choice = input.readInt("\nSelect", 1, 5);
@@ -93,8 +93,7 @@ public class Main
                     1. Create new order
                     2. See menu (View only)
                     3. See my orders (Full history)
-                    4. Edit profile
-                    """);
+                    4. Edit profile""");
                 System.out.println(Format.TXT_RED + "5. Exit" + Format.ANSI_RESET);
 
                 int choice = input.readInt("\nSelect",1 , 5);
@@ -122,7 +121,7 @@ public class Main
     private static void adminViewOrders()
     {
         System.out.print(Format.SCREEN_RESET);
-        System.out.println(Format.TXT_CYAN + "=====   ACTIVE ORDERS   =====" + Format.ANSI_RESET);
+        System.out.println(Format.TXT_CYAN + "=====   ACTIVE ORDERS   =====\n" + Format.ANSI_RESET);
 
         AdminOrderQueue view = new AdminOrderQueue();
         view.printList(currentUser);
@@ -133,8 +132,8 @@ public class Main
         
         if (isWaiting)
         {
-            System.out.println("\n------------------------------");
-            String adminAnswer = input.readString("Mark the current order as completed? (y/n)");
+            System.out.println("\n------------------------------------------------------------");
+            String adminAnswer = input.readYesNo(Format.TXT_CYAN + "Mark the current order as completed? (y/n)" + Format.ANSI_RESET);
             if (adminAnswer.equalsIgnoreCase("y"))
             {
                 fileHandler.completeNextOrder();
@@ -153,7 +152,7 @@ public class Main
     private static void adminEditMenus()
     {
         System.out.print(Format.SCREEN_RESET);
-        System.out.println(Format.TXT_CYAN + "=====   EDIT MENUS   =====" + Format.ANSI_RESET);
+        System.out.println(Format.TXT_CYAN + "=====   EDIT MENUS   =====\n" + Format.ANSI_RESET);
         System.out.println("1. Edit Hot Drinks");
         System.out.println("2. Edit Cold Drinks");
         System.out.println("3. Edit Extras");
@@ -165,7 +164,7 @@ public class Main
         ArrayList<String> currentMenu = fileHandler.loadMenu(menuType);
 
         System.out.print(Format.SCREEN_RESET);
-        System.out.println(Format.TXT_CYAN + "=====   CURRENT " + menuType.toUpperCase() + " MENU   =====" + Format.ANSI_RESET);
+        System.out.println(Format.TXT_CYAN + "=====   CURRENT " + menuType.toUpperCase() + " MENU   =====\n" + Format.ANSI_RESET);
         for (int i = 0; i < currentMenu.size(); i++)
         {
             System.out.println((i + 1) + ". " + currentMenu.get(i));
@@ -180,6 +179,7 @@ public class Main
 
         if (option == 1)    //add new item
         {
+            System.out.println(Format.TXT_CYAN + "Tip: " + Format.ANSI_RESET + "If you put '#' before and after your item, it will be recognised as a category subheading.");
             String newItem = input.readString("\nEnter the name of the new item.");
 
             int insertItemPosition = input.readInt("\nEnter line number to insert at (1-" + (currentMenu.size() + 1) + ")", 1, currentMenu.size() + 1);
@@ -229,12 +229,12 @@ public class Main
     private static void customerCreateOrder()   //method to create a new order as a customer
     {
         System.out.print(Format.SCREEN_RESET);
-        System.out.println("=== CREATE NEW ORDER ===");
+        System.out.println(Format.TXT_CYAN + "=== CREATE NEW ORDER ===\n" + Format.ANSI_RESET);
 
         //Hot/Cold drinks menu selection
         System.out.println("1. Hot Drinks");
         System.out.println("2. Cold Drinks");
-        int typeChoice = input.readInt("Choose Type", 1, 2);
+        int typeChoice = input.readInt("\nChoose Type", 1, 2);
         String menuType = (typeChoice == 1) ? "hot" : "cold";
 
         //drink selection within the menu
@@ -250,7 +250,9 @@ public class Main
         boolean addingExtras = true;
         while (addingExtras)
         {
-            String extrasChoice = input.readString("Would you like to modify your drink or add some extras? (y/n)");
+            //CHANGE
+            //Found issue where order doesn't save if you press enter and skip this question
+            String extrasChoice = input.readYesNo(Format.TXT_CYAN + "\nWould you like to modify your drink or add some extras? (y/n)" + Format.ANSI_RESET);
             
             if (extrasChoice.equalsIgnoreCase("y"))
             {
@@ -280,14 +282,16 @@ public class Main
         }
         
         //add notes to a drink order
+        System.out.println(Format.SCREEN_RESET);
         String orderNote = input.readString(Format.TXT_CYAN + "\nAdd a note (or press enter to skip)" + Format.ANSI_RESET);
         String orderId = fileHandler.generateOrderId();
         
         //
-        String orderString = orderId + "|Waiting|" + currentUser.getFullName() + "|" + myDrink.toString() + "|" + orderNote;
+        String orderString = orderId + "|Waiting|" + currentUser.getUsername() + "|" + currentUser.getFullName() + "|" + myDrink.toString() + "|" + orderNote;
         
         fileHandler.saveOrder(orderString);
         System.out.println(Format.TXT_GREEN + "Order placed successfully!" + Format.ANSI_RESET + " Your order number: " + orderId);
+        input.readString("\nPress enter to return to the main menu...");    //needed to display order confirmation message before screen is cleared.
     }//end of customerCreateOrder()
 
 
@@ -307,7 +311,7 @@ public class Main
     private static void customerViewHistory()
     {
         System.out.print(Format.SCREEN_RESET);
-        System.out.println(Format.TXT_CYAN + "=====   MY ORDER HISTORY   =====" + Format.ANSI_RESET);
+        System.out.println(Format.TXT_CYAN + "=====   MY ORDER HISTORY   =====\n" + Format.ANSI_RESET);
 
         CustomerOrderHistory view = new CustomerOrderHistory();
         view.printList(currentUser);
@@ -322,15 +326,14 @@ public class Main
         while (editingProfile)
         {
             System.out.print(Format.SCREEN_RESET);
-            System.out.println(Format.TXT_CYAN + "=====   EDIT PROFILE   =====" + Format.ANSI_RESET);
-            System.out.println(Format.TXT_CYAN + "Current Name: " + Format.ANSI_RESET + currentUser.getFullName());
+            System.out.println(Format.TXT_CYAN + "=====   EDIT PROFILE   =====\n" + Format.ANSI_RESET);
+            System.out.println(Format.TXT_CYAN + "Current Name:\n" + Format.ANSI_RESET + currentUser.getFullName());
             
             System.out.println("\nWhat would you like to change?");
             System.out.println
                 ("""
                 1. First Name
-                2. Last Name
-                """);
+                2. Last Name""");
             System.out.println("3. " + Format.TXT_RED + "Return to Main Menu" + Format.ANSI_RESET);
 
             int choice = input.readInt("\nSelect", 1, 3);

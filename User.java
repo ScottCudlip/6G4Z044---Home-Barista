@@ -25,6 +25,11 @@ public abstract class User implements Storable
         return firstName + " " + lastName;
     }
 
+    public String getUsername() //needed to fix data link break. if user changed their name, orders wouldn't be linked to them anymore
+    {
+        return username;
+    }
+
     //setters for users to change their profile name
     public void setFirstName(String firstName)
     {

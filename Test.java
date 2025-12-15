@@ -34,7 +34,7 @@ public class Test
         System.out.println("TESTS COMPLETED:" + testsRun);
         if (testsPassed == testsRun)
         {
-            System.out.println("RESULT: " + Format.TXT_GREEN + "ALL TESTS PASSED:" + Format.ANSI_RESET);
+            System.out.println("RESULT: " + Format.TXT_GREEN + "ALL TESTS PASSED: 100%" + Format.ANSI_RESET);
         }
         else
         {
@@ -188,7 +188,7 @@ public class Test
         String expectedResult = "New Name";
     
         check("\tProfile updates correctly", result.equals(expectedResult));
-    }
+    }//end of testProfileEditing()
 
 
 
@@ -220,7 +220,7 @@ public class Test
             allFormatted = false;
         }
         check("\tInterface: All storable items formatted correctly", allFormatted == true);
-    }
+    }//end of testInterfaces
 
 
 

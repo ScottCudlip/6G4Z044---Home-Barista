@@ -44,16 +44,16 @@ public abstract class OrderViewer
                 //not recognising "|" for some reason
                 //FIXED - special character in java, added \\ to fix issue
                 String[] parts = order.split("\\|");
-                if (parts.length >= 4)
+                if (parts.length >= 5)
                 {
-                    System.out.println("Order No:   " + parts[0]);
+                    System.out.println("\nOrder No:   " + Format.BG_BLUE +parts[0] + Format.ANSI_RESET);
                     
                     String statusColour = parts[1].contains("Waiting") ? Format.TXT_YELLOW : Format.TXT_GREEN;
                     System.out.println("Status:     " + statusColour + parts[1] + Format.ANSI_RESET);
                     
-                    System.out.println("User:       " + parts[2]);
+                    System.out.println("User:       " + parts[3]);
                     
-                    String fullItemString = parts[3];   //reads full item order string
+                    String fullItemString = parts[4];   //reads full item order string
 
                     if (fullItemString.contains(" with ")) //splits the display after the drink name
                     {
@@ -74,11 +74,11 @@ public abstract class OrderViewer
                         System.out.println("Item:       " + fullItemString);
                     }
 
-                    if (parts.length > 4 && !parts[4].equals("null") && !parts[4].isEmpty())
+                    if (parts.length > 5 && !parts[5].equals("null") && !parts[5].isEmpty())
                     {
-                        System.out.println("Note:       " + parts[4]);
+                        System.out.println("Note:       " + parts[5]);
                     }
-                    System.out.println("------------------------------------------------------------");
+                    System.out.println("\n------------------------------------------------------------");
                 }
             }
         }

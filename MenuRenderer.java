@@ -18,7 +18,7 @@ public class MenuRenderer
         int counter = 1;
 
         System.out.print(Format.SCREEN_RESET);
-        System.out.println(Format.BG_WHITE + Format.TXT_BLACK + "\n===== " + menuType.toUpperCase() + " MENU =====" + Format.ANSI_RESET);
+        System.out.println(Format.BG_WHITE + Format.TXT_BLACK + "========== " + menuType.toUpperCase() + " MENU ==========\n" + Format.ANSI_RESET);
 
         for (String line : menuFileLines)
         {

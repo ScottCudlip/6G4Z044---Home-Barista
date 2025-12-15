@@ -15,8 +15,13 @@ public class CustomerOrderHistory extends OrderViewer
 
         for (String order : allOrders)
         {
-            if (order.contains(user.getFullName()))
+            String[] parts = order.split("\\|");
+
+            //14/12/25 fixed data link, username is now index 2
+            if (parts.length > 2 && parts[2].equals(user.getUsername()))
+            {
                 myOrders.add(order);
+            }
         }
         return myOrders;
     }
