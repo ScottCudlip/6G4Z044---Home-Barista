@@ -1,27 +1,29 @@
 # CUSTOMISE / EXTRAS MENU #
 
-# Add Extras #
+# ADD EXTRAS #
 Extra Coffee Shot
 Marshmallow(s)
 Whipped Cream
 Chocolate Dusting
 
-# Milks #
+# MILKS #
 Skimmed Milk
 Semi-Skimmed Milk
 Whole Milk
 
-# Dairy Alternatives #
+# DAIRY ALTERNATIVES #
 Coconut Milk
 Soya Milk
 Oat Milk
 
-# Syrups #
+# SYRUPS #
 Caramel Syrup
 Vanilla Syrup
 Hazelnut Syrup
 Orange Syrup
 Pumpkin Spice Syrup
+Peach Syrup
+Lemonade Concentrate Syrup
 
 SF Cararmel Syrup
 SF Vanilla Syrup

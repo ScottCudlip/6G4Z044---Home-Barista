@@ -1,7 +1,26 @@
+# ESPRESSO BASED #
 Iced Americano Black
 Iced Americano w/ Milk
 
+# MILK-BASED ESPRESSO#
+Iced Flat White
 Iced Latte
-Cold Chocolate
+Iced Spanish Latte
+Iced Cappuccino
 
+# NON COFFEE #
+Cold Milk
+Iced Chocolate
+Iced Chai
+Lemonade
+Iced Tea
+
+# MATCHA #
 Iced Matcha Latte
+
+# FRAPPES #
+Blueberry
+Chocolate Frappe
+Mango Frappe
+Salted Caramel Frappe
+Strawberry Frappe

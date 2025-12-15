@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-//class to help with inputs and keep the programme running
-
+//class to help with inputs and keep the programme running.
+//loops back and asks for input again if an incompatable one is entered.
 public class InputHelper
 {
     //CHANGE
     //allocated new scanner in memory, fixed the error for now
-    private Scanner scanner = new Scanner(System.in);
-    //not closed anywhere, yet!
+    public Scanner scanner; // = new Scanner(System.in);
+    //not closed anywhere!
 
     public InputHelper()
     {

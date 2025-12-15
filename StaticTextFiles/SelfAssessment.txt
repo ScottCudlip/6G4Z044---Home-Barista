@@ -3,10 +3,10 @@
 =============================================================================================
 |                                                                                           |
 |                                                                                           |
-|   Student ID:     25948591                                                                |
-|   Student Name:   Scott Cudlip                                                            |
-|   Module:         6G4Z0044_2526_1P - Introduction to Programming                          |
-|   Submission:     2CWK50 - Digital Artefact                                               |
+|   Student ID:         25948591                                                            |
+|   Student Name:       Scott Cudlip                                                        |
+|   Module:             6G4Z0044_2526_1P - Introduction to Programming                      |
+|   Submission:         2CWK50 - Digital Artefact                                           |
 |                                                                                           |
 |                                                                                           |
 |===============|===================================|=======================================|
@@ -24,7 +24,10 @@
 |===============|===================================|=======================================|
 
 
+[X] = YES
 
+
+########## CODE FEATURES ##########
 # BASIC USER INPUT #
 - InputHelper.java is an OO solution to use a scanner without importing it multiple times and writing lines of code to close it every time as I found this difficult in testing with data being held incorrectly and a lot of code needed to fix it, so I researched a one-size-fits-all approach online.
 
@@ -38,10 +41,29 @@
 # ARRAYS & TESTING #
 - Extensive use of ArrayLists and some Arrays across the entire programme. The basis of the programme is selection of options from menus but these menus can be changed in size.
 - Testing carried out during the developmet of the programme and any bugs found were listed in BugTracker.txt and corrected.
+- Test.java runs a long list testing the various methods of the programme.
 
 # OBJECT-ORIENTATION #
-- 
+- Entire programme is structured with objects, classes, methods, and encapsulation is implemented as well.
+
+# INHERITANCE + ADVANCED OO #
+- Hot & cold drinks inherit from the parent 'drinks', customer and admin inherit from 'user'
+- Polymorphism - different object types treated as their parents (Drinks can hold HotDrink and ColdDrink object types)
+- At the end of development, added the use of an interface to standardise how objects are formatted for how my programme stores and reads files. Can be further implemented with the creation of future objects.
+- Abstract classes used throughout to prevent incomplete objects getting made and causing programme to fail
+- Efficient input validation - InputHelper class created to handle common errors from scanner usage (I knew I'd be using scanners a lot) and handles errors correctly and efficiently without exiting the programme. eliminated the common problems of not closing a scanner or opening a new one to accept different data types.
 
 # ADDITIONAL FEATURES #
-- Saving data between sessions with read/write files. Some .txt files are formatted for a cleaner layout in terminal, the programme recognises "#" character and black lines and eliminates them from being includes in the ArrayLists. Inspired by YAML files I've worked with in the past.
-- Formating colours for text output in terminal, and clearing the screen for easier UX. Consistent use of colours implemented... green:success messages, yellow:waiting orders, red:errors,
+- Saving data between sessions with read/write files. Some .txt files are formatted for a cleaner layout when read as menus in the terminal, the programme recognises "#" character and blank lines and eliminates them from being included in the ArrayLists. Inspired by YAML files I've worked with recently.
+- UX Formating - Format class to output colours in terminal, and clearing the screen for easier programme behaviour. Clearing the screen also reduces likelihood of incorrect inputs as the user should only see relevant info.
+- Advanced list managment. Admin can edit menus by adding/renaming/deleting items in a list. Can choose where in the list to add a new item instead of them just getting added to the end of the list.
+- Recursion - AdminViewOrders calls itself whenever an order status is changed essentially refreshing the orders screen without running a loop.
+
+
+########## CODE STYLE ##########
+- Code submitted with 0 errors and the programme behaves as intended.
+- Variables named correclty, easy to call upon and understand their use from their given names.
+- consistent indentation. further use of indentation and shortcut expressions such as \n \t and """ for formatting outputs more efficiently with less code.
+- Extensive comments used, especially where I struggled to understand behaviours so I wrote in what/why something happens here etc. //CHANGE = identifier I can search for, for something I want to come back and change later on.
+- Appropriate package structure. Classes and methods are extracted to own files where it felt appropriate and were being called on from Main. Files are relative to package and won't break when programme is run from different locations/devices.
+- Self-directed code management, GitHub. https://github.com/ScottCudlip/6G4Z044---Home-Barista

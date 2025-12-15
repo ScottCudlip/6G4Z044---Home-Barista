@@ -1,6 +1,6 @@
 //parent for Admin and Customer classes
 
-public abstract class User
+public abstract class User implements Storable
 {
     protected String username;
     protected String password;
@@ -23,6 +23,24 @@ public abstract class User
     public String getFullName()
     {
         return firstName + " " + lastName;
+    }
+
+    //setters for users to change their profile name
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    //implementing Storable interface
+    @Override
+    public String toFileFormat()
+    {
+        return username + "|" + password + "|" + firstName + "|" + lastName;
     }
 
     //determines what options the user has access to

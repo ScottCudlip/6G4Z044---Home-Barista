@@ -1,21 +1,23 @@
-# Espresso-Based #
+# ESPRESSO BASED #
 Espresso - Single
 Espresso - Double
 Ristretto
 Americano Black
 Americano w/ Milk
 
-# Milk-Based Espresso #
+# MILK-BASED ESPRESSO #
 Cortado
 Flat White
 Cappuccino
 Latte
+Spanish Latte
 Mocha
 
-# Non-Coffee #
+# NON COFFEE #
 Hot Milk
 Hot Chocolate
+White Hot Chocolate
 Chai Latte
 
-# Matcha #
+# MATCHA #
 Matcha Latte

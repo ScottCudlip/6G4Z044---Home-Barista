@@ -2,7 +2,7 @@
 
 import java.util.ArrayList;
 
-public abstract class Drinks 
+public abstract class Drinks implements Storable
 {
     protected String name;
     protected ArrayList<String> extras;
@@ -35,5 +35,11 @@ public abstract class Drinks
             {
                 return name + " (" + getType() + ") with " + String.join(", ", extras);
             }
+    }
+
+    @Override   //implementing Storable interface
+    public String toFileFormat()
+    {
+        return this.toString();
     }
 }

@@ -1,3 +1,4 @@
+//Formatting class to introduce colours to the programme for better UX
 public class Format 
 {
     //ANSI code to reset colour formats
@@ -27,4 +28,5 @@ public class Format
     public static final String CURSOR_RESET =   "\033[H";   //Moves the cursor to the top left corner of the terminal
     public static final String SCREEN_CLEAR =   "\033[J";   //Clears the terminal screen
     public static final String SCREEN_RESET =   CURSOR_RESET + SCREEN_CLEAR;    //Clears the terminal screen and resets the cursor position
-}
+    
+}//end of Format class

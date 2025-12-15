@@ -1,43 +1,60 @@
-===== TASK PLANNER =====
+============= TASK PLANNER =============
 
-[ ] ReadMe file, include IDE used.
+[X] Readme file, include IDE used.
 
-Features to add...
-[ ] Use random number function for different goodbye message per session
-
-Additional features...
 [ ] Date formatting & calculations
-[ ] colours
+[X] colours
 [ ] Research how to make usernames and passwords encrypted/secure. Only if time to implement the feature.
 [X] Saving data between sessions - reading files
-[ ] Code to clear screen between inputs/menus
+[X] Code to clear screen between inputs/menus
 [ ] Sign out option to allow signing in without restarting programme
-[X] GitHub version controls & repositories
+[X] GitHub version controls & repositories with multiple commits.
 [X] Abstract classes
-[ ] Interfaces
-[ ] Scanner errors: Open scanner in main, pass through to methods and close end of main, or run scanners separately in each method.
-[ ] Explain how orders can be read with multiple extras added.
-
-[ ] My variables are quite descriptive, by making the methods private I can shorten the variable names and they'll only be visible when using the parent method of that variable.
-[ ] Extract more methods from main.java where it makes sense and simplifies flow of the code
-[ ] Generate Getters & setters
-[ ] THOROUGH testing, Testing.class, multiple functions for testing each method/class
-[ ] Comments, especially to explain fixes to coding based on tested behaviour
-[ ] Make sure all read/write files are relative and don't have defined paths that will break on different devices
-[ ] Makre sure I have Arrays AND ArrayLists
-[ ] Customer - view orders screen, similar to admin without the admin control features. Could use Inheritance
+[X] Scanner errors: Open scanner in main, pass through to methods and close end of main, or run scanners separately in each method.
+[X] Explain how orders can be read with multiple extras added.
+[X] Create an interface to format objects so they can be read from .txt files, will allow me to edit user profiles in the future to not be hardcoded into the programme code.
+[X] Add GitHub link to readme.txt file for marking
+[X] My variables are quite descriptive, by making the methods private I can shorten the variable names and they'll only be visible when using the parent method of that variable.
+[X] Extract more methods from main.java where it makes sense and simplifies flow of the code
+[X] THOROUGH testing, Testing.class, multiple functions for testing each method/class
+[X] Comments, especially to explain fixes to coding based on tested behaviour
+[X] Make sure all read/write files are relative and don't have defined paths that will break on different devices
+[X] Customer - view orders screen, similar to admin without the admin control features. Could use Inheritance
 [ ] Method to make a title/header for different views, that's always the same character length by triming the filler space in the middle.
-[ ] Formatting the layout of the menus has broken the edit menus option for admin, need to fix.
+[X] Formatting the layout of the menus has broken the edit menus option for admin, need to fix.
+[ ] Hints for editing menus, keywords for extras will ask different questions after selection. And #'s used to create subtitle in menus
 
-===== COMMENTS =====
+
+
+============ BUG/BEHAVIOURS ============
+
+[X] ALL         -   Extras displaying on one line is difficult to read if there are a lot of them
+[X] ALL         -   Saving menu items to files as number selections can't work if menus are edited after saving, they'll be read wrong.
+[X] ALL         -   If you press enter when a menu is asking for an option it will correctly give error message, but it clears the screen so you can't see that same menu anymore. Remove screen clear or display the menu again after error message (I'll need to create a way to track what menu I'm currently in to do this option)
+
+[ ] CUSTOMER    -   Can't go back a menu once selected hot/cold or extras
+[X] CUSTOMER    -   If multiple extras are on an orderm the array is read wrong when displaying those in the order history screen. //FIXED: changed "," to "|" in orders.txt
+[X] CUSTOMER    -   My order history screen has formatting issues
+[ ] CUSTOMER    -   When adding extras, the screen should clear after confirmation message, otherwise likely to get another number input instead of y/n confirmation
+[ ] CUSTOMER    -   Screen should clear again before asking if they want to add a note to the order.
+[ ] CUSTOMER    -   Order history screen doesn't need to have user's name displayed each time. Inheritance needs changed so this doesn't affect admin view output
+
+[X] ADMIN       -   Diagnostics test for cold drink with multiple extras failing //FIXED
+[X] ADMIN       -   Can't see the menus once selected one to edit. //FIXED: Screen was being cleared after the menu was printed to terminal
+[X] ADMIN       -   View orders screen not displaying anything since implementation of custom order history screen. linked to name of order creater //FIXED: Capital W on waiting was not being found.
+[X] ADMIN       -   When adding something to a menu through 'edit menu' it adds it to the bottom of the list, needs changed to choose where they add the item in the list. list.add & list.set 
+
+
+
+============= COMMENTS ==============
 
 //CHANGE = identifier I can search for, for something I want to come back and change later
 
-===== 1CW50 - REPORT =====
 
-- If submitted as a document, it NEEDS to look like a webpage.
 
-===== DOCUMENTS =====
+============= DOCUMENTS =============
 
-[ ] Marking criteria.
-[ ] Lookup readme examples to structure my readme file.
+[X] Marking criteria - Self-assesment.
+[X] readme file.
+
+
